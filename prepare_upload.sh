@@ -15,7 +15,7 @@ CODE_DIR=$(dirname $CODE_DIR)/$(basename $CODE_DIR)
 cp -r -n $CODE_DIR ./$NAME
 
 # Make a blank req file if none provided
-REQ_FILE=CODE_DIR/requirements.txt
+REQ_FILE=$CODE_DIR/requirements.txt
 touch $REQ_FILE
 
 # Download all the wheels/tar balls with our docker as the target
