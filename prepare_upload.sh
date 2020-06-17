@@ -35,4 +35,4 @@ echo "Built achive for upload"
 unzip -l ./$NAME.zip
 
 echo "For scoring, upload $NAME.zip at address:"
-echo "https://chirp.azurewebsites.net/my-submissions"
+echo "https://bbochallenge.com/my-submissions"
