@@ -1,6 +1,6 @@
 # Black Box Optimization Challenge
 
-This repo contains the starter kit for the [black box optimization challenge](http://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
+This repo contains the starter kit for the [black box optimization challenge](https://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
 Upload submissions [here](https://bbochallenge.com/my-submissions).
 
 The challenge will give the participants 3 months to iterate on their algorithms.
@@ -13,7 +13,7 @@ Baselines will be set using the default settings of six open source black-box op
 Look in `example_submissions` to see examples of submissions.
 The examples currently contain the sub-directories:
 
-```
+```console
 hyperopt/
 nevergrad/
 opentuner/
@@ -29,61 +29,35 @@ skopt/
 Local experimentation/benchmarking on publicly available problems can be done using Bayesmark, which is extensively [documented](https://bayesmark.readthedocs.io/en/latest/index.html).
 Note, these are not the same problems as on the leader board when submitting on the website, but may be useful for local iteration.
 
+For convenience the script `run_local` can do local benchmarking in a single command:
+
 ```console
-> # setup
-> DB_ROOT=./output  # path/to/where/you/put/results
-> DBID=demo
-> # experiments
-> bayesmark-launch -n 15 -r 3 -dir $DB_ROOT -b $DBID -o Opentuner PySOT -v
-Supply --uuid 3adc3182635e44ea96969d267591f034 to reproduce this run.
-Supply --dbid bo_example_folder to append to this experiment or reproduce jobs file.
-User must ensure equal reps of each optimizer for unbiased results
--c DT -d boston -o PySOT -u a1b287b450385ad09b2abd7582f404a2 -m mae -n 15 -p 1 -dir /notebooks -b bo_example_folder
--c DT -d boston -o PySOT -u 63746599ae3f5111a96942d930ba1898 -m mse -n 15 -p 1 -dir /notebooks -b bo_example_folder
--c DT -d boston -o RandomSearch -u 8ba16c880ef45b27ba0909199ab7aa8a -m mae -n 15 -p 1 -dir /notebooks -b bo_example_folder
-...
-0 failures of benchmark script after 144 studies.
-done
-> # aggregate
-> bayesmark-agg -dir $DB_ROOT -b $DBID
-> # analyze
-> bayesmark-anal -dir $DB_ROOT -b $DBID -v
-...
-median score @ 15:
-optimizer
-PySOT_0.2.3_9b766b6           0.330404
-RandomSearch_0.0.1_9b766b6    0.961829
-mean score @ 15:
-optimizer
-PySOT_0.2.3_9b766b6           0.124262
-RandomSearch_0.0.1_9b766b6    0.256422
-normed mean score @ 15:
-optimizer
-PySOT_0.2.3_9b766b6           0.475775
-RandomSearch_0.0.1_9b766b6    0.981787
-done
+./run_local.sh ./example_submissions/pysot 3
 ```
 
-More explanation on how the mean score formula works can be found [here](https://bayesmark.readthedocs.io/en/latest/scoring.html#mean-scores).
+The first argument gives the folder of the optimizer to run, while the second argument gives the number of repeated trials for each problem.
+Set the repeated trials as large as possible within your computational budget.
+For finer grain control over which experiments to run, use the Bayesmark commands directly.
+See the [documentation](https://bayesmark.readthedocs.io/en/latest/readme.html#example) for details.
 
-If running new experiments (without the `baseline.json` file), `RandomSearch` must be included in the optimizers for the purposes of baselining.
+More explanation on how the mean score formula works can be found [here](https://bayesmark.readthedocs.io/en/latest/scoring.html#mean-scores).
 
 ## Instructions for submissions on the website
 
 The quick-start instructions work as follows:
 
 * Place all the necessary Python files to execute the optimizer in a folder, for example, `example_submissions/pysot`.
-The site will use `optimizer.py` as the *entry-point* (any filename is allowed if there is only one `.py` file).
+The site will use `optimizer.py` as the *entry-point*.
 * The Python environment will be `Python 3.7.7` and contain all dependencies in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
 All other dependencies must be placed in a `requirements.txt` in the same folder as `optimizer.py`.
 
 The submission can be prepared using the `prepare_upload` script:
 
-```
+```bash
 ./prepare_upload.sh ./example_submissions/pysot
 ```
 
-This will produce a zip file (e.g., `upload_pysot.zip`) that can be uploaded at the submission site.
+This will produce a zip file (e.g., `upload_pysot.zip`) that can be uploaded at the [submission site](https://bbochallenge.com/my-submissions).
 See, `./prepare_upload.sh ./example_submissions/opentuner` for an example with a requirements file.
 
 The submissions will be evaluated inside a docker container that has *no internet connection*.
@@ -105,7 +79,13 @@ After that, it will be cutoff from further suggestions.
 
 The `prepare_upload` script will only fetch the wheels for packages available on [PyPI](https://pypi.org/).
 If a package is not available on PyPI you can include the wheel in the optimizer folder manually.
-Wheels can be built using the command `python3 setup.py sdist bdist_wheel` as documented [here](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
+Wheels can be built using the command:
+
+```bash
+python3 setup.py sdist bdist_wheel
+```
+
+as documented [here](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
 
 ## Optimizer API
 
@@ -176,7 +156,7 @@ if __name__ == "__main__":
 You can replace `NewOptimizerName` with the name of your optimizer.
 
 More details on the API can be found [here](https://bayesmark.readthedocs.io/en/latest/readme.html#id1).
-Note: do not specify `kwargs` in a `config.json` for the competition because the online evaluation will not pass any `kwargs` or use the `config.json`.
+Note: do not specify `kwargs` in a `config.json` for the challenge because the online evaluation will not pass any `kwargs` or use the `config.json`.
 
 ### Configuration space
 
