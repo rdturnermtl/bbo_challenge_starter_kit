@@ -65,9 +65,13 @@ RandomSearch_0.0.1_9b766b6    0.981787
 done
 ```
 
+TODO link to how scoring works
+
+If running new experiments (without the `baseline.json` file), `RandomSearch` must be included in the optimizers for the purposes of baselining.
+
 ## Instructions for submissions on the website
 
-TODO note, 2 core, no GPU, OS
+TODO note final scoring will be randomly held out probs from leaderboard
 TODO file link env.txt
 
 The quick-start instructions work as follows:
@@ -96,6 +100,8 @@ Note: the Python file should be at the top level of zip file (and not inside a p
 ### Execution environment
 
 The docker environment has two cores and no GPUs.
+TODO state OS
+TODO time limit per problems
 
 ### Non-PyPI dependencies
 
@@ -106,3 +112,9 @@ Wheels can be built using the command `python3 setup.py sdist bdist_wheel` as do
 ## Optimizer API
 
 TODO copy-past basic outline here, link to bayesmark documentation
+
+### Configuration space
+
+TODO include space examples from proposal
+
+TODO T&C link
