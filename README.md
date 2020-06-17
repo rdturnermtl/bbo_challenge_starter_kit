@@ -64,7 +64,7 @@ RandomSearch_0.0.1_9b766b6    0.981787
 done
 ```
 
-TODO link to how scoring works
+More explanation on how the mean score formula works can be found [here](https://bayesmark.readthedocs.io/en/latest/scoring.html#mean-scores).
 
 If running new experiments (without the `baseline.json` file), `RandomSearch` must be included in the optimizers for the purposes of baselining.
 
@@ -83,9 +83,8 @@ The submission can be prepared using the `prepare_upload` script:
 ./prepare_upload.sh ./example_submissions/pysot
 ```
 
-TODO example with requirements.
-
 This will produce a zip file (e.g., `upload_pysot.zip`) that can be uploaded at the submission site.
+See, `./prepare_upload.sh ./example_submissions/opentuner` for an example with a requirements file.
 
 The submissions will be evaluated inside a docker container that has *no internet connection*.
 Therefore, `prepare_upload.sh` places all dependencies from `requirements.txt` as wheel files inside the zip file.
