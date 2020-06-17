@@ -1,6 +1,7 @@
 # Black Box Optimization Challenge
 
 This repo contains the starter kit for the [black box optimization challenge](http://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
+Upload submissions [here](https://bbochallenge.com/my-submissions).
 
 The challenge will give the participants 3 months to iterate on their algorithms.
 We will use a benchmark system built on top of the AutoML challenge workflow and the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions
@@ -8,8 +9,6 @@ For example, it will include tuning (validation set) performance of standard mac
 This competition has widespread impact as black-box optimization (e.g., Bayesian optimization) is relevant for hyper-parameter tuning in almost every machine learning project (especially deep learning), as well as many applications outside of machine learning.
 The leader board will be determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
 Baselines will be set using the default settings of six open source black-box optimization packages and random search.
-
-TODO all links: main site, submissions
 
 Look in `example_submissions` to see examples of submissions.
 The examples currently contain the sub-directories:
@@ -71,15 +70,12 @@ If running new experiments (without the `baseline.json` file), `RandomSearch` mu
 
 ## Instructions for submissions on the website
 
-TODO note final scoring will be randomly held out probs from leaderboard
-TODO file link env.txt
-
 The quick-start instructions work as follows:
 
 * Place all the necessary Python files to execute the optimizer in a folder, for example, `example_submissions/pysot`.
 The site will use `optimizer.py` as the *entry-point* (any filename is allowed if there is only one `.py` file).
-* The Python environment will be `Python 3.7.7` and contain all dependencies in `environment.txt`.
-All other dependencies must be placed in `requirements.txt` in the same folder as `optimizer.py`.
+* The Python environment will be `Python 3.7.7` and contain all dependencies in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
+All other dependencies must be placed in a `requirements.txt` in the same folder as `optimizer.py`.
 
 The submission can be prepared using the `prepare_upload` script:
 
@@ -97,11 +93,14 @@ Therefore, `prepare_upload.sh` places all dependencies from `requirements.txt` a
 The zip file can also manually be constructed by zipping the Python files (including `optimizer.py`) and all necessary wheel/tar balls for installing extra dependencies.
 Note: the Python file should be at the top level of zip file (and not inside a parent folder).
 
+Also note, our optimization problems have been randomly split into a set that will be used to determine the leader board, and another set that will determine the final winner once submissions are closed.
+
 ### Execution environment
 
 The docker environment has two cores and no GPUs.
-TODO state OS
-TODO time limit per problems
+It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
+The optimizer has only TODO minutes on each problem.
+After that, it will be cutoff from further suggestions.
 
 ### Non-PyPI dependencies
 
@@ -111,7 +110,7 @@ Wheels can be built using the command `python3 setup.py sdist bdist_wheel` as do
 
 ## Optimizer API
 
-TODO copy-past basic outline here, link to bayesmark documentation
+TODO copy-paste basic outline here, link to bayesmark documentation
 
 ### Configuration space
 
