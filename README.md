@@ -104,16 +104,85 @@ After that, it will be cutoff from further suggestions.
 
 ### Non-PyPI dependencies
 
-The `prepare_upload` script will only fetch the wheels for packages available on PyPI.
+The `prepare_upload` script will only fetch the wheels for packages available on [PyPI](https://pypi.org/).
 If a package is not available on PyPI you can include the wheel in the optimizer folder manually.
 Wheels can be built using the command `python3 setup.py sdist bdist_wheel` as documented [here](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
 
 ## Optimizer API
 
-TODO copy-paste basic outline here, link to bayesmark documentation
+Optimizer submissions should follow this template, for a suggest-observe interface, in `optimizer.py`:
+
+```python
+from bayesmark.abstract_optimizer import AbstractOptimizer
+from bayesmark.experiment import experiment_main
+
+
+class NewOptimizerName(AbstractOptimizer):
+    primary_import = None  # Optional, used for tracking the version of optimizer used
+
+    def __init__(self, api_config):
+        """Build wrapper class to use optimizer in benchmark.
+
+        Parameters
+        ----------
+        api_config : dict-like of dict-like
+            Configuration of the optimization variables. See API description.
+        """
+        AbstractOptimizer.__init__(self, api_config)
+        # Do whatever other setup is needed
+        # ...
+
+    def suggest(self, n_suggestions=1):
+        """Get suggestion from the optimizer.
+
+        Parameters
+        ----------
+        n_suggestions : int
+            Desired number of parallel suggestions in the output
+
+        Returns
+        -------
+        next_guess : list of dict
+            List of `n_suggestions` suggestions to evaluate the objective
+            function. Each suggestion is a dictionary where each key
+            corresponds to a parameter being optimized.
+        """
+        # Do whatever is needed to get the parallel guesses
+        # ...
+        return x_guess
+
+    def observe(self, X, y):
+        """Feed an observation back.
+
+        Parameters
+        ----------
+        X : list of dict-like
+            Places where the objective function has already been evaluated.
+            Each suggestion is a dictionary where each key corresponds to a
+            parameter being optimized.
+        y : array-like, shape (n,)
+            Corresponding values where objective has been evaluated
+        """
+        # Update the model with new objective function observations
+        # ...
+        # No return statement needed
+
+
+if __name__ == "__main__":
+    # This is the entry point for experiments, so pass the class to experiment_main to use this optimizer.
+    # This statement must be included in the wrapper class file:
+    experiment_main(NewOptimizerName)
+```
+
+You can replace `NewOptimizerName` with the name of your optimizer.
+
+More details on the API can be found [here](https://bayesmark.readthedocs.io/en/latest/readme.html#id1).
+Note: do not specify `kwargs` in a `config.json` for the competition because the online evaluation will not pass any `kwargs` or use the `config.json`.
 
 ### Configuration space
 
 TODO include space examples from proposal
 
-TODO T&C link
+## Terms and conditions
+
+The terms and conditions for the challenge are available [here](TODO).
