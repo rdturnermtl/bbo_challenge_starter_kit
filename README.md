@@ -35,7 +35,7 @@ For convenience the script `run_local` can do local benchmarking in a single com
 ./run_local.sh ./example_submissions/pysot 3
 ```
 
-The first argument gives the folder of the optimizer to run, while the second argument gives the number of repeated trials for each problem.
+The first argument gives the *folder of the optimizer* to run, while the second argument gives the number of *repeated trials* for each problem.
 Set the repeated trials as large as possible within your computational budget.
 For finer grain control over which experiments to run, use the Bayesmark commands directly.
 See the [documentation](https://bayesmark.readthedocs.io/en/latest/readme.html#example) for details.
@@ -70,7 +70,7 @@ Also note, our optimization problems have been randomly split into a set that wi
 
 ### Execution environment
 
-The docker environment has two cores and no GPUs.
+The docker environment has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
 The optimizer has only TODO minutes on each problem.
 After that, it will be cutoff from further suggestions.
@@ -89,7 +89,7 @@ as documented [here](https://packaging.python.org/tutorials/packaging-projects/#
 
 ## Optimizer API
 
-Optimizer submissions should follow this template, for a suggest-observe interface, in `optimizer.py`:
+Optimizer submissions should follow this template, for a suggest-observe interface, in your `optimizer.py`:
 
 ```python
 from bayesmark.abstract_optimizer import AbstractOptimizer
