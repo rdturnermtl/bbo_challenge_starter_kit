@@ -3,6 +3,9 @@
 This repo contains the starter kit for the [black box optimization challenge](https://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
 Upload submissions [here](https://bbochallenge.com/my-submissions).
 
+The submission site will open July 1, 2020.
+We will be open early for practice submissions in the beta-testing phase, but the leader board will be reset on July 1.
+
 The challenge will give the participants 3 months to iterate on their algorithms.
 We will use a benchmark system built on top of the AutoML challenge workflow and the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions
 For example, it will include tuning (validation set) performance of standard machine learning models on real data sets.
@@ -68,14 +71,16 @@ Therefore, `prepare_upload.sh` places all dependencies from `requirements.txt` a
 The zip file can also manually be constructed by zipping the Python files (including `optimizer.py`) and all necessary wheel/tar balls for installing extra dependencies.
 Note: the Python file should be at the top level of zip file (and not inside a parent folder).
 
-Also note, our optimization problems have been randomly split into a set that will be used to determine the leader board, and another set that will determine the final winner once submissions are closed.
+Also note, our optimization problems have been randomly split into a set that will be used to determine the leader board, and another set that will determine the final winner once submissions are closed (October 15, 2020).
 
 ### Execution environment
 
 The docker environment has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
-The optimizer has only TODO minutes on each problem.
-After that, it will be cutoff from further suggestions.
+
+The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 steps with batch size of 8); or ~2.8 seconds per suggestion batch.
+Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
+These timing limits are subject to change prior to the launch date.
 
 ### Non-PyPI dependencies
 
@@ -164,6 +169,18 @@ Note: do not specify `kwargs` in a `config.json` for the challenge because the o
 
 TODO include space examples from proposal
 
+## Schedule
+
+* Submission site open to public: July 1
+* Deadline for final submissions: October 15
+* Announcement of winners: November 15
+* Presentations, short papers, and code release from winners due: December 1
+* Competition track (virtual) award ceremony: December 2020
+
 ## Terms and conditions
 
 The terms and conditions for the challenge are available [here](TODO).
+
+## Contact
+
+Any questions can be sent to <info@bbochallenge.com>.
