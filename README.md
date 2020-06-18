@@ -59,7 +59,9 @@ The submission can be prepared using the `prepare_upload` script:
 
 ```console
 > ./prepare_upload.sh ./example_submissions/pysot
-TODO
+...
+For scoring, upload upload_pysot.zip at address:
+https://bbochallenge.com/my-submissions
 ```
 
 This will produce a zip file (e.g., `upload_pysot.zip`) that can be uploaded at the [submission site](https://bbochallenge.com/my-submissions).
@@ -80,6 +82,7 @@ It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-instal
 
 The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 steps with batch size of 8); or ~2.8 seconds per suggestion batch.
 Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
+Participant teams will be limited to one submission per day.
 These timing limits are subject to change prior to the launch date.
 
 ### Non-PyPI dependencies
@@ -167,7 +170,7 @@ Note: do not specify `kwargs` in a `config.json` for the challenge because the o
 
 ### Configuration space
 
-TODO include space examples from proposal
+TODO (David) include space examples from proposal
 
 ## Schedule
 
