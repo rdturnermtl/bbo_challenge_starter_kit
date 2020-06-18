@@ -32,7 +32,8 @@ Note, these are not the same problems as on the leader board when submitting on 
 For convenience the script `run_local` can do local benchmarking in a single command:
 
 ```console
-./run_local.sh ./example_submissions/pysot 3
+> ./run_local.sh ./example_submissions/pysot 3
+TODO
 ```
 
 The first argument gives the *folder of the optimizer* to run, while the second argument gives the number of *repeated trials* for each problem.
@@ -53,8 +54,9 @@ All other dependencies must be placed in a `requirements.txt` in the same folder
 
 The submission can be prepared using the `prepare_upload` script:
 
-```bash
-./prepare_upload.sh ./example_submissions/pysot
+```console
+> ./prepare_upload.sh ./example_submissions/pysot
+TODO
 ```
 
 This will produce a zip file (e.g., `upload_pysot.zip`) that can be uploaded at the [submission site](https://bbochallenge.com/my-submissions).
@@ -82,7 +84,7 @@ If a package is not available on PyPI you can include the wheel in the optimizer
 Wheels can be built using the command:
 
 ```bash
-python3 setup.py sdist bdist_wheel
+python3 setup.py bdist_wheel
 ```
 
 as documented [here](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
