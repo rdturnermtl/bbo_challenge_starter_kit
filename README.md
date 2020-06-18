@@ -80,7 +80,7 @@ Also note, our optimization problems have been randomly split into a set that wi
 The docker environment has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
 
-The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 steps with batch size of 8); or ~2.8 seconds per suggestion batch.
+The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 iterations with batch size of 8); or ~2.8 seconds per iteration.
 Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
 Participant teams will be limited to one submission per day.
 These timing limits are subject to change prior to the launch date.
