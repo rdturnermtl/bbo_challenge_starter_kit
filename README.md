@@ -36,6 +36,7 @@ For convenience the script `run_local` can do local benchmarking in a single com
 
 ```console
 > ./run_local.sh ./example_submissions/pysot 3
+...
 --------------------
 Final score for leaderboard:
 optimizer
