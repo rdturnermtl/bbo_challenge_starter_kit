@@ -16,6 +16,7 @@
     -   id: check-json
     -   id: pretty-format-json
         args: [--autofix, --indent=4]
+        exclude: ^(input/*)
     -   id: check-yaml
     -   id: sort-simple-yaml
 -   repo: https://github.com/ambv/black
