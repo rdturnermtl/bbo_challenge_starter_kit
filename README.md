@@ -222,7 +222,7 @@ Also, `next_guess` will be a length `n_suggestions` array of dictionaries of gue
 
 ## Terms and conditions
 
-The terms and conditions for the challenge are available [here](TODO).
+The terms and conditions for the challenge are available [here](https://github.com/rdturnermtl/bbo_challenge_starter_kit/files/4801454/terms_and_conditions.pdf).
 
 ## Contact
 
