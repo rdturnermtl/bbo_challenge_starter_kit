@@ -38,9 +38,9 @@ For convenience the script `run_local` can do local benchmarking in a single com
 > ./run_local.sh ./example_submissions/pysot 3
 ...
 --------------------
-Final score for leaderboard:
+Final score `100 x (1-loss)` for leaderboard:
 optimizer
-pysot_0.2.3_Valohai-runner    0.12349
+pysot_0.2.3_8cae841    81.11426
 ```
 
 The first argument gives the *folder of the optimizer* to run, while the second argument gives the number of *repeated trials* for each problem.
