@@ -83,6 +83,7 @@ Also note, our optimization problems have been randomly split into a set that wi
 
 The docker environment has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
+Participants have until July 31 to suggest new packages be added to the docker on startup.
 
 The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 iterations with batch size of 8); or ~2.8 seconds per iteration.
 Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
@@ -102,6 +103,9 @@ python3 setup.py bdist_wheel
 as documented [here](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives).
 
 ## Optimizer API
+
+All optimization problems are *minimization*.
+Lower values of the black-box is function are better.
 
 Optimizer submissions should follow this template, for a suggest-observe interface, in your `optimizer.py`:
 
@@ -207,7 +211,8 @@ One can also make the following assumption on the configurations:
 
 For `observe`, `X` is a (length `n`) list of dictionaries with places where the objective function has already been evaluated.
 Each suggestion is a dictionary where each key corresponds to a parameter being optimized.
-Likewise, `y` is a length `n` array of corresponding objective values.
+Likewise, `y` is a length `n` list of floats of corresponding objective values.
+The observations `y` can take on `inf` values if the objective function crashes, however, it should never be `nan`.
 
 For `suggest`, `n_suggestions` is simply the desired number of parallel suggestions for each guess.
 Also, `next_guess` will be a length `n_suggestions` array of dictionaries of guesses, in the same format as `X`.
