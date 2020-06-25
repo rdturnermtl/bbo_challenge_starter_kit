@@ -1,4 +1,4 @@
-# Pinned requirements used in the docker image (0.83) that executes submissions (Python 3.6.10)
+# Pinned requirements used in the docker image (0.88) that executes submissions (Python 3.6.10)
 absl-py==0.9.0
 astunparse==1.6.3
 attrs==19.3.0
