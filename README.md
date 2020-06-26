@@ -7,9 +7,9 @@ The submission site is open July 1, 2020 - October 15, 2020.
 We will be open early for practice submissions in the beta-testing phase, but the leader board will be reset on July 1.
 
 The benchmark site is powered by [Valohai](https://valohai.com/) and runs the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions.
-For example, it will include tuning (validation set) performance of standard machine learning models on real data sets.
+It includes tuning (validation set) performance of standard machine learning models on real data sets.
 Currently, all of the problems are based on ML hyper-parameter tuning tasks.
-There are example problems in the starter kit that can be run locally, but the leader board problems secret.
+There are example problems in the starter kit that can be run locally, but the leader board problems are secret.
 
 The leader board is determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
 
@@ -23,6 +23,7 @@ opentuner/
 pysot/
 random_search/
 skopt/
+turbo/
 ```
 
 ![Bayesmark output](https://user-images.githubusercontent.com/28273671/66338456-02516b80-e8f6-11e9-8156-2e84e04cf6fe.png)
@@ -57,7 +58,7 @@ The quick-start instructions work as follows:
 
 * Place all the necessary Python files to execute the optimizer in a folder, for example, `example_submissions/pysot`.
 The site will use `optimizer.py` as the *entry-point*.
-* The Python environment will be `Python 3.7.7` and contain all dependencies in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
+* The Python environment will be `Python 3.6.10` and contain all dependencies in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
 All other dependencies must be placed in a `requirements.txt` in the same folder as `optimizer.py`.
 
 The submission can be prepared using the `prepare_upload` script:
@@ -115,7 +116,7 @@ as documented [here](https://packaging.python.org/tutorials/packaging-projects/#
 ## Optimizer API
 
 All optimization problems are *minimization*.
-Lower values of the black-box is function are better.
+Lower values of the black-box function are better.
 
 Optimizer submissions should follow this template, for a suggest-observe interface, in your `optimizer.py`:
 
