@@ -92,7 +92,7 @@ These timing limits are subject to change prior to the launch date.
 
 The docker environment has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.6.10` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
-Participants have until July 31 to suggest new packages be added to the docker on startup.
+Participants have until July 31 to suggest new packages be added to `environment.txt` in the docker.
 The environment in the docker can be produced locally by creating a new Python 3.6.10 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html#creating-virtual-environments) and running:
 
 ```bash
@@ -104,7 +104,9 @@ It consumes ~1.6GB of disk space to create the virtual environment.
 ### Non-PyPI dependencies
 
 The `prepare_upload` script will only fetch the wheels for packages available on [PyPI](https://pypi.org/).
-If a package is not available on PyPI you can include the wheel in the optimizer folder manually.
+If a package is not available on PyPI, you can use a public git repo instead; see the `turbo` example.
+
+If a package is only available in a private git repo, you can include the wheel in the optimizer folder manually.
 Wheels can be built using the command:
 
 ```bash
