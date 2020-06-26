@@ -3,15 +3,15 @@
 This repo contains the starter kit for the [black box optimization challenge](https://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
 Upload submissions [here](https://bbochallenge.com/my-submissions).
 
-The submission site will open July 1, 2020.
+The submission site is open July 1, 2020 - October 15, 2020.
 We will be open early for practice submissions in the beta-testing phase, but the leader board will be reset on July 1.
 
-The challenge will give the participants 3 months to iterate on their algorithms.
-We will use a benchmark system built on top of the AutoML challenge workflow and the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions
+The benchmark site is powered by [Valohai](https://valohai.com/) and runs the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions.
 For example, it will include tuning (validation set) performance of standard machine learning models on real data sets.
-This competition has widespread impact as black-box optimization (e.g., Bayesian optimization) is relevant for hyper-parameter tuning in almost every machine learning project (especially deep learning), as well as many applications outside of machine learning.
-The leader board will be determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
-Baselines will be set using the default settings of six open source black-box optimization packages and random search.
+Currently, all of the problems are based on ML hyper-parameter tuning tasks.
+There are example problems in the starter kit that can be run locally, but the leader board problems secret.
+
+The leader board is determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
 
 Look in `example_submissions` to see examples of submissions.
 The examples currently contain the sub-directories:
@@ -43,6 +43,7 @@ optimizer
 pysot_0.2.3_8cae841    81.11426
 ```
 
+It produces a lot of log output as it runs, that is normal.
 The first argument gives the *folder of the optimizer* to run, while the second argument gives the number of *repeated trials* for each problem.
 Set the repeated trials as large as possible within your computational budget.
 For finer grain control over which experiments to run, use the Bayesmark commands directly.
@@ -79,16 +80,25 @@ Note: the Python file should be at the top level of zip file (and not inside a p
 
 Also note, our optimization problems have been randomly split into a set that will be used to determine the leader board, and another set that will determine the final winner once submissions are closed (October 15, 2020).
 
-### Execution environment
+### Time limits
 
-The docker environment has two CPU cores and no GPUs.
-It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.7.7` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
-Participants have until July 31 to suggest new packages be added to the docker on startup.
-
-The optimizer has a total of 90 seconds compute time for making suggestions on each problem (32 iterations with batch size of 8); or ~2.8 seconds per iteration.
+The optimizer has a total of 640 seconds compute time for making suggestions on each problem (32 iterations with batch size of 8); or 20 seconds per iteration.
 Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
 Participant teams will be limited to one submission per day.
 These timing limits are subject to change prior to the launch date.
+
+### Execution environment
+
+The docker environment has two CPU cores and no GPUs.
+It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.6.10` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
+Participants have until July 31 to suggest new packages be added to the docker on startup.
+The environment in the docker can be produced locally by creating a new Python 3.6.10 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html#creating-virtual-environments) and running:
+
+```bash
+pip install -r environment.txt
+```
+
+It consumes ~1.6GB of disk space to create the virtual environment.
 
 ### Non-PyPI dependencies
 
