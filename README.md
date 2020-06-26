@@ -4,14 +4,14 @@ This repo contains the starter kit for the [black box optimization challenge](ht
 Upload submissions [here](https://bbochallenge.com/my-submissions).
 
 The submission site is open July 1, 2020 - October 15, 2020.
-We will be open early for practice submissions in the beta-testing phase, but the leader board will be reset on July 1.
+We will be open early for practice submissions in the beta-testing phase, but the leaderboard will be reset on July 1.
 
 The benchmark site is powered by [Valohai](https://valohai.com/) and runs the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions.
 It includes tuning (validation set) performance of standard machine learning models on real data sets.
 Currently, all of the problems are based on ML hyper-parameter tuning tasks.
-There are example problems in the starter kit that can be run locally, but the leader board problems are secret.
+There are example problems in the starter kit that can be run locally, but the leaderboard problems are secret.
 
-The leader board is determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
+The leaderboard is determined using the optimization performance on held-out (hidden) objective functions, where the optimizer must run without human intervention.
 
 Look in `example_submissions` to see examples of submissions.
 The examples currently contain the sub-directories:
@@ -31,7 +31,7 @@ turbo/
 ## Instructions for local experiments
 
 Local experimentation/benchmarking on publicly available problems can be done using Bayesmark, which is extensively [documented](https://bayesmark.readthedocs.io/en/latest/index.html).
-Note, these are not the same problems as on the leader board when submitting on the website, but may be useful for local iteration.
+Note, these are not the same problems as on the leaderboard when submitting on the website, but may be useful for local iteration.
 
 For convenience the script `run_local` can do local benchmarking in a single command:
 
@@ -77,9 +77,9 @@ The submissions will be evaluated inside a docker container that has *no interne
 Therefore, `prepare_upload.sh` places all dependencies from `requirements.txt` as wheel files inside the zip file.
 
 The zip file can also manually be constructed by zipping the Python files (including `optimizer.py`) and all necessary wheel/tar balls for installing extra dependencies.
-Note: the Python file should be at the top level of zip file (and not inside a parent folder).
+Note: the Python file should be at the top level of the zip file (and not inside a parent folder).
 
-Also note, our optimization problems have been randomly split into a set that will be used to determine the leader board, and another set that will determine the final winner once submissions are closed (October 15, 2020).
+Also note, our optimization problems have been randomly split into a set that will be used to determine the leaderboard, and another set that will determine the final winner once submissions are closed (October 15, 2020).
 
 ### Time limits
 
@@ -141,7 +141,7 @@ class NewOptimizerName(AbstractOptimizer):
         # ...
 
     def suggest(self, n_suggestions=1):
-        """Get suggestion from the optimizer.
+        """Get suggestions from the optimizer.
 
         Parameters
         ----------
