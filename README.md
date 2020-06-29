@@ -28,6 +28,16 @@ turbo/
 
 ![Bayesmark output](https://user-images.githubusercontent.com/28273671/66338456-02516b80-e8f6-11e9-8156-2e84e04cf6fe.png)
 
+## Background
+
+[Bayesian optimization](https://arxiv.org/abs/1807.02811) is a popular sample-efficient approach for optimizing objective functions that take several minutes or hours to evaluate.
+Bayesian optimization builds a surrogate model (often a [Gaussian process](http://www.gaussianprocess.org/gpml/)) for the objective function that provides a measure of uncertainty.
+Using this surrogate model, an acquisition function is used to determine the most promising point to evaluate next.
+
+Bayesian optimization has many applications, with hyperparameter tuning of machine learning models (e.g., deep neural networks) being one of the most popular applications.
+However, the choice of surrogate model and acquisition function are both problem-dependent and the goal of this challenge is to compare different approaches over a large number of different problems.
+This challenge focuses on the application of Bayesian optimization to tuning the hyper-parameters of machine learning models.
+
 ## Instructions for local experiments
 
 Local experimentation/benchmarking on publicly available problems can be done using Bayesmark, which is extensively [documented](https://bayesmark.readthedocs.io/en/latest/index.html).
