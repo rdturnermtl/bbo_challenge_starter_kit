@@ -30,7 +30,7 @@ turbo/
 
 ## Background
 
-[Bayesian optimization](https://arxiv.org/abs/1807.02811) is a popular sample-efficient approach for optimizing objective functions that take several minutes or hours to evaluate.
+[Bayesian optimization](https://arxiv.org/abs/1807.02811) is a popular sample-efficient approach for derivative-free optimization of objective functions that take several minutes or hours to evaluate.
 Bayesian optimization builds a surrogate model (often a [Gaussian process](http://www.gaussianprocess.org/gpml/)) for the objective function that provides a measure of uncertainty.
 Using this surrogate model, an acquisition function is used to determine the most promising point to evaluate next.
 
