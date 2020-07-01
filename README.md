@@ -3,8 +3,8 @@
 This repo contains the starter kit for the [black box optimization challenge](https://bbochallenge.com/) at [NeurIPS 2020](https://neurips.cc/Conferences/2020/CompetitionTrack).
 Upload submissions [here](https://bbochallenge.com/my-submissions).
 
-The submission site is open July 1, 2020 - October 15, 2020.
-We will be open early for practice submissions in the beta-testing phase, but the leaderboard will be reset on July 1.
+The submission site is open July 10, 2020 - October 15, 2020.
+We will be open early for practice submissions in the beta-testing phase, but the leaderboard will be reset on July 10.
 
 The benchmark site is powered by [Valohai](https://valohai.com/) and runs the [Bayesmark package](https://github.com/uber/bayesmark), which evaluates black-box optimization algorithms on real-world objective functions.
 It includes tuning (validation set) performance of standard machine learning models on real data sets.
@@ -242,7 +242,7 @@ Also, `next_guess` will be a length `n_suggestions` array of dictionaries of gue
 
 ## Schedule
 
-* Submission site open to public: July 1
+* Submission site open to public: July 10
 * Deadline for final submissions: October 15
 * Announcement of winners: November 15
 * Presentations, short papers, and code release from winners due: December 1
@@ -250,7 +250,7 @@ Also, `next_guess` will be a length `n_suggestions` array of dictionaries of gue
 
 ## Terms and conditions
 
-The terms and conditions for the challenge are available [here](https://github.com/rdturnermtl/bbo_challenge_starter_kit/files/4801454/terms_and_conditions.pdf).
+The terms and conditions for the challenge: coming soon.
 
 ## Contact
 
