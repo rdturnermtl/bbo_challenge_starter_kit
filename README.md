@@ -93,14 +93,16 @@ Also note, our optimization problems have been randomly split into a set that wi
 
 ### Time limits
 
-The optimizer has a total of 640 seconds compute time for making suggestions on each problem (32 iterations with batch size of 8); or 20 seconds per iteration.
+The optimizer has a total of 640 seconds compute time for making suggestions on each problem (16 iterations with batch size of 8); or 40 seconds per iteration.
 Optimizers exceeding the time limits will be cut off from making further suggestions and the best optima found before being killed will be used.
-Participant teams will be limited to one submission per day.
-These timing limits are subject to change prior to the launch date.
+The optimizer evaluation terminates after 16 iterations (batch size 8) or 640 seconds, whichever happens earlier.
+There is no way to get more iterations by being faster.
+
+Participant teams will be limited to one submission per day (we are temporarily allowing five per day).
 
 ### Execution environment
 
-The docker environment has two CPU cores and no GPUs.
+The docker environment for scoring on the website has two CPU cores and no GPUs.
 It runs in `Debian GNU/Linux 10 (buster)` with `Python 3.6.10` and the pre-installed packages in [environment.txt](https://github.com/rdturnermtl/bbo_challenge_starter_kit/blob/master/environment.txt).
 Participants have until July 31 to suggest new packages be added to `environment.txt` in the docker.
 The environment in the docker can be produced locally by creating a new Python 3.6.10 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html#creating-virtual-environments) and running:
