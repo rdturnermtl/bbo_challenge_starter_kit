@@ -4,7 +4,7 @@ set -ex
 set -o pipefail
 
 # Default number of steps and batch size for the challenge
-# N_STEP=32
+# N_STEP=16
 # N_BATCH=8
 
 # For a fast experiment:
