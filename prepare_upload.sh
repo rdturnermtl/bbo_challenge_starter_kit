@@ -19,7 +19,7 @@ REQ_FILE=./$NAME/requirements.txt
 touch $REQ_FILE
 
 # Download all the wheels/tar balls with our docker as the target
-pip download -r $REQ_FILE -d ./$NAME --python-version 37 --implementation cp --platform manylinux1_x86_64 --abi cp37m --no-deps
+pip download -r $REQ_FILE -d ./$NAME --python-version 36 --implementation cp --platform manylinux1_x86_64 --abi cp36m --no-deps
 
 # Test zip does not exist yet to avoid clobber
 ! test -f $NAME.zip
