@@ -91,6 +91,20 @@ Note: the Python file should be at the top level of the zip file (and not inside
 
 Also note, our optimization problems have been randomly split into a set that will be used to determine the leaderboard, and another set that will determine the final winner once submissions are closed (October 15, 2020).
 
+### Controlling install order
+
+The docker startup script does not necessarily install a dependency and its second order dependency in the desired order, which can lead to errors on the submission website.
+To control install order, bundle a file called `install_order.txt` at the top of level of the zip file.
+In this file, list of all of the wheels/tar-balls, one-per-line, in the order you want them installed.
+For example, a `install_order.txt` with:
+
+```
+botorch-0.3.0-py3-none-any.whl
+ax_platform-0.1.0-cp36-cp36m-manylinux1_x86_64.whl
+```
+
+will install BoTorch first and then Ax.
+
 ### Time limits
 
 The optimizer has a total of 640 seconds compute time for making suggestions on each problem (16 iterations with batch size of 8); or 40 seconds per iteration.
