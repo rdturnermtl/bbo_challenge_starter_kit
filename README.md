@@ -107,7 +107,7 @@ will install BoTorch first and then Ax.
 
 ### Debugging execution issues locally
 
-It is possible mock the startup install script run on the server locally using our docker image.
+It is possible to mock the startup install script run on the server locally using our docker image.
 For example, to debug the startup for `upload_turbo.zip` locally, one can run:
 
 ```console
