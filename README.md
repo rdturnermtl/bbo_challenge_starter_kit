@@ -105,6 +105,42 @@ ax_platform-0.1.0-cp36-cp36m-manylinux1_x86_64.whl
 
 will install BoTorch first and then Ax.
 
+### Debugging execution issues locally
+
+It is possible mock the startup install script run on the server locally using our docker image.
+For example, to debug the startup for `upload_turbo.zip` locally, one can run:
+
+```console
+> docker pull valohai/bbochallenge:20200821-57e60f9
+20200821-57e60f9: Pulling from valohai/bbochallenge
+d6ff36c9ec48: Pull complete
+c958d65b3090: Pull complete
+...
+> docker run -it valohai/bbochallenge:20200821-57e60f9 /bin/bash
+root@90d3e94c5156:/# mkdir -p /valohai/inputs/optimizer
+> CONTAINER=90d3e94c5156
+> docker cp ./upload_turbo.zip $CONTAINER:/valohai/inputs/optimizer/upload_turbo.zip
+root@90d3e94c5156:/# ls /valohai/inputs/optimizer
+upload_turbo.zip
+root@90d3e94c5156:/# python /blackbox/prepare.py -i /valohai/inputs/optimizer -o /blackbox/optimizer
+Bayesmark.version 01090c64b92bd5f7e138d9f80b37d4b171462ce4
+Processing /blackbox/optimizer/turbo-0.0.1.zip
+Requirement already satisfied: numpy>=1.17.3 in /usr/local/lib/python3.6/site-packages (from turbo==0.0.1) (1.18.5)
+Requirement already satisfied: torch>=1.3.0 in /usr/local/lib/python3.6/site-packages (from turbo==0.0.1) (1.5.0)
+Requirement already satisfied: gpytorch>=0.3.6 in /usr/local/lib/python3.6/site-packages (from turbo==0.0.1) (1.1.1)
+Requirement already satisfied: future in /usr/local/lib/python3.6/site-packages (from torch>=1.3.0->turbo==0.0.1) (0.18.2)
+Building wheels for collected packages: turbo
+  Building wheel for turbo (setup.py) ... done
+  Created wheel for turbo: filename=turbo-0.0.1-py3-none-any.whl size=12382 sha256=d9c90fbfe571a426ff0c82f164fd6c5a95462bc2ca219a816f1c62e30199b4fe
+  Stored in directory: /root/.cache/pip/wheels/59/83/8f/7ce3dd69f1e81e4aa8adbb82a7f1b8f89473c82df67d83d675
+Successfully built turbo
+Installing collected packages: turbo
+Successfully installed turbo-0.0.1
+```
+
+Commands starting with `>` are run on the local terminal, while those starting with `root@` should be run in the docker.
+Any issues involved in installing dependencies should appear in the docker when calling `prepare.py`.
+
 ### Time limits
 
 The optimizer has a total of 640 seconds compute time for making suggestions on each problem (16 iterations with batch size of 8); or 40 seconds per iteration.
