@@ -1,9 +1,10 @@
-# Pinned requirements used in the docker image (0.88) that executes submissions (Python 3.6.10)
+# Pinned requirements used in the docker image (valohai/bbochallenge:20200821-57e60f9) that executes submissions (Python 3.6.12)
 absl-py==0.9.0
 astunparse==1.6.3
 attrs==19.3.0
 bayesian-optimization==0.6.0
-bayesmark==0.0.6
+bayesmark==0.0.7
+botorch==0.2.1
 cachetools==4.1.0
 certifi==2020.4.5.1
 chardet==3.0.4
@@ -78,7 +79,6 @@ tensorflow==2.2.0
 tensorflow-estimator==2.2.0
 tensorflow-hub==0.8.0
 termcolor==1.1.0
-threadpoolctl==2.1.0
 torch==1.5.0
 typed-ast==1.4.1
 typing-extensions==3.7.4.2
